@@ -1,77 +1,18 @@
-package "apache2" do
-  package_name node[:apache][:package]
-  action :install
+# service['apache2'] is defined in the apache2_default_install resource but other resources are currently unable to reference it.  To work around this issue, define the following helper in your cookbook:
+service 'apache2' do
+  service_name lazy { apache_platform_service_name }
+  supports restart: true, status: true, reload: true
+  action :nothing
 end
 
-service "apache2" do
-    service_name "httpd"
-    restart_command "/sbin/service httpd restart && sleep 1"
-    reload_command "/sbin/service httpd reload && sleep 1"
+apache2_install 'default_install'
+apache2_module 'headers'
+apache2_module 'ssl'
+
+apache2_default_site 'foo' do
+  default_site_name 'my_site'
+  template_cookbook 'my_cookbook'
+  port '443'
+  template_source 'my_site.conf.erb'
   action :enable
-end
-
-directory node[:apache][:log_dir] do
-    mode 0755
-    action :create
-end
-
-directory "#{node[:apache][:dir]}/ssl" do
-  action :create
-  mode 0755
-  owner "root"
-  group node[:apache][:root_group]
-end
-
-directory "#{node[:apache][:dir]}/conf.d" do
-  action :create
-  mode 0755
-  owner "root"
-  group node[:apache][:root_group]
-end
-
-directory node[:apache][:cache_dir] do
-  action :create
-  mode 0755
-  owner "root"
-  group node[:apache][:root_group]
-end
-
-template "apache2.conf" do
-  path "#{node[:apache][:dir]}/conf/httpd.conf"
-  source "apache2.conf.erb"
-  owner "root"
-  group node[:apache][:root_group]
-  mode 0644
-  notifies :restart, resources(:service => "apache2")
-end
-
-template "security" do
-  path "#{node[:apache][:dir]}/conf.d/security"
-  source "security.erb"
-  owner "root"
-  group node[:apache][:root_group]
-  mode 0644
-  backup false
-  notifies :restart, resources(:service => "apache2")
-end
-
-template "#{node[:apache][:dir]}/ports.conf" do
-  source "ports.conf.erb"
-  owner "root"
-  group node[:apache][:root_group]
-  variables :apache_listen_ports => node[:apache][:listen_ports].map{|p| p.to_i}.uniq
-  mode 0644
-  notifies :restart, resources(:service => "apache2")
-end
-
-template "#{node[:apache][:dir]}/sites-available/default" do
-  source "default-site.erb"
-  owner "root"
-  group node[:apache][:root_group]
-  mode 0644
-  notifies :restart, resources(:service => "apache2")
-end
-
-service "apache2" do
-  action :start
 end

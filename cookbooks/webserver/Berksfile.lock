@@ -1,0 +1,12 @@
+DEPENDENCIES
+  apache
+    path: .
+    metadata: true
+  apache2 (~> 8.14.4)
+
+GRAPH
+  apache (0.0.1)
+    apache2 (~> 8.14.4)
+  apache2 (8.14.4)
+    yum-epel (>= 0.0.0)
+  yum-epel (4.5.0)

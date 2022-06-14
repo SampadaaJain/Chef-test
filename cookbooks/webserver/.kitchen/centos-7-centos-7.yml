@@ -1,0 +1,5 @@
+---
+last_error: Kitchen::ActionFailed
+server_id: i-0a25e28420de9d895
+hostname: ec2-44-203-59-74.compute-1.amazonaws.com
+last_action: converge

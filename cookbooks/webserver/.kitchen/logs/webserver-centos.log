@@ -1,0 +1,46 @@
+I, [2022-06-14T17:06:38.551066 #18667]  INFO -- webserver-centos: -----> Creating <webserver-centos>...
+I, [2022-06-14T17:06:38.696639 #18667]  INFO -- webserver-centos: Detected platform: rhel version 8.5 on x86_64. Instance Type: t2.micro. Default username: ec2-user (default).
+I, [2022-06-14T17:06:38.696801 #18667]  INFO -- webserver-centos: If you are not using an account that qualifies under the AWS
+free-tier, you may be charged to run these suites. The charge
+should be minimal, but neither Test Kitchen nor its maintainers
+are responsible for your incurred costs.
+
+E, [2022-06-14T17:06:39.084203 #18667] ERROR -- webserver-centos: Create failed on instance <webserver-centos>.
+E, [2022-06-14T17:06:39.084304 #18667] ERROR -- webserver-centos: ------Exception-------
+E, [2022-06-14T17:06:39.084327 #18667] ERROR -- webserver-centos: Class: Aws::EC2::Errors::InvalidParameterCombination
+E, [2022-06-14T17:06:39.084340 #18667] ERROR -- webserver-centos: Message: The parameter groupName cannot be used with the parameter subnet
+E, [2022-06-14T17:06:39.084352 #18667] ERROR -- webserver-centos: ----------------------
+E, [2022-06-14T17:06:39.084363 #18667] ERROR -- webserver-centos: ------Backtrace-------
+E, [2022-06-14T17:06:39.084374 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-core-3.82.0/lib/seahorse/client/plugins/raise_response_errors.rb:15:in `call'
+E, [2022-06-14T17:06:39.084386 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-core-3.82.0/lib/aws-sdk-core/plugins/jsonvalue_converter.rb:20:in `call'
+E, [2022-06-14T17:06:39.084398 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-core-3.82.0/lib/aws-sdk-core/plugins/idempotency_token.rb:17:in `call'
+E, [2022-06-14T17:06:39.084409 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-core-3.82.0/lib/aws-sdk-core/plugins/param_converter.rb:24:in `call'
+E, [2022-06-14T17:06:39.084421 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-core-3.82.0/lib/aws-sdk-core/plugins/response_paging.rb:10:in `call'
+E, [2022-06-14T17:06:39.084432 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-core-3.82.0/lib/seahorse/client/plugins/response_target.rb:23:in `call'
+E, [2022-06-14T17:06:39.084451 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-core-3.82.0/lib/seahorse/client/request.rb:70:in `send_request'
+E, [2022-06-14T17:06:39.084464 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-ec2-1.121.0/lib/aws-sdk-ec2/client.rb:32359:in `run_instances'
+E, [2022-06-14T17:06:39.084475 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/aws-sdk-ec2-1.121.0/lib/aws-sdk-ec2/resource.rb:481:in `create_instances'
+E, [2022-06-14T17:06:39.084486 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/kitchen-ec2-3.2.0/lib/kitchen/driver/aws/client.rb:53:in `create_instance'
+E, [2022-06-14T17:06:39.084501 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/kitchen-ec2-3.2.0/lib/kitchen/driver/ec2.rb:417:in `submit_server'
+E, [2022-06-14T17:06:39.084518 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/kitchen-ec2-3.2.0/lib/kitchen/driver/ec2.rb:233:in `block in create'
+E, [2022-06-14T17:06:39.084531 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/kitchen-ec2-3.2.0/lib/kitchen/driver/ec2.rb:623:in `with_request_limit_backoff'
+E, [2022-06-14T17:06:39.084543 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/kitchen-ec2-3.2.0/lib/kitchen/driver/ec2.rb:233:in `create'
+E, [2022-06-14T17:06:39.084554 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:485:in `public_send'
+E, [2022-06-14T17:06:39.084566 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:485:in `block in perform_action'
+E, [2022-06-14T17:06:39.084588 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:552:in `synchronize_or_call'
+E, [2022-06-14T17:06:39.084638 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:514:in `block in action'
+E, [2022-06-14T17:06:39.084659 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+E, [2022-06-14T17:06:39.084671 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:513:in `action'
+E, [2022-06-14T17:06:39.084682 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:485:in `perform_action'
+E, [2022-06-14T17:06:39.084693 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:394:in `create_action'
+E, [2022-06-14T17:06:39.084711 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:382:in `block (2 levels) in transition_to'
+E, [2022-06-14T17:06:39.084723 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/lifecycle_hooks.rb:45:in `run_with_hooks'
+E, [2022-06-14T17:06:39.084734 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:381:in `block in transition_to'
+E, [2022-06-14T17:06:39.084745 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:380:in `each'
+E, [2022-06-14T17:06:39.084756 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:380:in `transition_to'
+E, [2022-06-14T17:06:39.084771 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/instance.rb:129:in `create'
+E, [2022-06-14T17:06:39.084783 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/command.rb:198:in `public_send'
+E, [2022-06-14T17:06:39.084795 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/command.rb:198:in `run_action_in_thread'
+E, [2022-06-14T17:06:39.084806 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/test-kitchen-2.3.4/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2022-06-14T17:06:39.084817 #18667] ERROR -- webserver-centos: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/logging-2.2.2/lib/logging/diagnostic_context.rb:474:in `block in create_with_logging_context'
+E, [2022-06-14T17:06:39.084833 #18667] ERROR -- webserver-centos: ----End Backtrace-----

@@ -1,0 +1,39 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: Kitchen-key
+  security_group_ids: ["sg-001c44ecd5e46d131","sg-0a49c77fc6ad88d54"]
+  region: us-east-1
+  require_chef_omnibus: true
+  subnet_id: subnet-01bc0ab15e8369a94
+  instance_type: t2.micro
+  tags: 
+    Created By: "Sampada"
+    Name: "test_apache_server"
+    app: webserver
+    env: dev
+
+transport:
+  ssh_key: "<%=ENV['HOME']%>/.ssh/Kitchen-key.pem"
+  connection_timeout: 500
+  connection_retries: 5
+  username: ec2-user
+
+platforms:
+  - name: centos-7
+    driver:
+      image_id: ami-0f095f89ae15be883
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            volume_type: gp3
+            volume_size: 10
+            delete_on_termination: true
+suites:
+  - name: centos-7
+    run_list: 
+      - recipe[apache]
+verifier:
+  name: inspec
+inspec_test:
+  path: test/integration
