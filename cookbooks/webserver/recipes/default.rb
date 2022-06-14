@@ -16,3 +16,11 @@ apache2_default_site 'foo' do
   template_source 'my_site.conf.erb'
   action :enable
 end
+
+git "#{node[:apache][:app][:dir]}/index.html" do
+  repository node[:apache][:git_repository]
+  revision node[:apache][:git_revision]
+  action :sync
+  notifies :restart, resources(:service => "apache2")
+end
+
