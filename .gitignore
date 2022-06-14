@@ -123,3 +123,7 @@ nodes
 # ## Office Temp Files
 # ~$*
 .chef
+*.log
+.kitchen
+*/.kitchen
+*/.kitchen/*
